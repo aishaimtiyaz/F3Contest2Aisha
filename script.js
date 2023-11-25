@@ -4,7 +4,7 @@
     const appContainer = document.getElementById("app");
 
     // Check if the user is logged in
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("email");
     if (accessToken) {
         // User is logged in, show the profile page
         showProfilePage();
@@ -17,27 +17,30 @@
     function showSignupPage() {
         // Render the Signup Page HTML
         appContainer.innerHTML = `
-            <div class="container signup-form">
-                <p>Welcome back!</p>
-                <h2>Sign up to your account</h2>
-                <form id="signup-form">
-                    <label for="name">Your name</label>
-                    <input type="text" id="name" required>
-    
-                    <label for="email">Your email</label>
-                    <input type="email" id="email" required>
-    
-                    <label for="password">Password</label>
-                    <input type="password" id="password" required>
-    
-                    <label for="confirm-password">Confirm password</label>
-                    <input type="password" id="confirm-password" required>
-    
-                    <button type="button" id="continue-btn">Continue</button>
-                </form>
-                <p class="error-message" id="error-message" style="color: blue;"></p>
-                <p>Don't have an account? <a href="#" id="signup-link">Sign Up</a></p>
-            </div>
+           
+           <div class="container signup-form">
+           <p>Welcome back!<img src="./assets/icons8-waving-hand-emoji-48.png" alt=""></p>
+           <h2>Sign up to your account</h2>
+           <form id="signup-form">
+               <label for="name">Your name</label>
+               <input type="text" id="name" required>
+
+               <label for="email">Your email</label>
+               <input type="email" id="email" required>
+
+               <label for="password">Password</label>
+               <input type="password" id="password" required>
+
+               <label for="confirm-password">Confirm password</label>
+               <input type="password" id="confirm-password" required>
+
+               <button type="button" id="continue-btn">Continue</button>
+               <p class="error-message" id="error-message" style="color: blue;"></p>
+           </form>
+           
+       </div>
+           <p class="para">Don't have an account? <a href="#" id="signup-link"> Sign Up</a></p>
+           
         `;
     
         const signupForm = document.getElementById("signup-form");
@@ -63,7 +66,7 @@
     
             // Check if any field is left blank
             if (!name || !email || !password || !confirmPassword) {
-                displayErrorMessage("Error: All fields are mandatory");
+                displayErrorMessage("Error: All fields are mandatory!");
                 return;
             }
     
@@ -108,15 +111,16 @@
 
         // Render the Profile Page HTML
         appContainer.innerHTML = `
+             <div class= "profBg"></div>
             <div class="container profile-page">
                 <h2 style="color: blue;">Signup Successful!</h2>
                 <div class="profile-card">
                     <h3>Profile</h3>
-                    <img src="profile-icon.png" alt="Profile Icon">
+                    <p><img src="./assets/profile.png" alt="profile"></p>
                     <p><strong>Full Name:</strong> ${name}</p>
                     <p><strong>Email:</strong> ${email}</p>
                     <p><strong>Token:</strong> ${accessToken}</p>
-                    <p><strong>Password:</strong> ********</p>
+                    <p><strong>Password:</strong> *********</p>
                     <button id="logout-btn">Logout</button>
                 </div>
             </div>
